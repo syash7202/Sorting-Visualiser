@@ -36,6 +36,10 @@ console.log(barHeights);
 //      function for animations
 // ------------------------------------------
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function swap(el1, el2) {
   const style1 = window.getComputedStyle(el1);
   const style2 = window.getComputedStyle(el2);
@@ -44,4 +48,5 @@ async function swap(el1, el2) {
   const height2 = style2.getPropertyValue("height");
   el1.style.height = height2;
   el2.style.height = height1;
+  await sleep(100);
 }

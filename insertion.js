@@ -1,32 +1,27 @@
-// ------------------------------------------
-//      Insertion sort algo
-// ------------------------------------------
-
 async function insertionSort() {
-  const container = document.querySelector(".button-box");
-  const bars = button - box.children;
-  const n = bars.length;
-  // Disable the button before starting sorting
-  insertionSortButton.disabled = true;
+  const barsInsertion = document.querySelectorAll(".bar");
+  const n = barsInsertion.length;
 
   for (let i = 1; i < n; i++) {
-    const keyHeight = parseInt(bars[i].style.height);
+    const keyHeight = parseInt(barsInsertion[i].style.height);
     let j = i - 1;
 
-    bars[i].style.backgroundColor = "red";
+    barsInsertion[i].style.backgroundColor = "red";
 
-    while (j >= 0 && parseInt(bars[j].style.height) > keyHeight) {
-      bars[j + 1].style.height = bars[j].style.height;
+    while (j >= 0 && parseInt(barsInsertion[j].style.height) > keyHeight) {
+      barsInsertion[j + 1].style.backgroundColor = "red";
+      await swap(barsInsertion[j], barsInsertion[j + 1]);
+      barsInsertion[j + 1].style.backgroundColor = "#00ff48";
       j--;
-      await sleep(100); // Delay for visualization
     }
 
-    bars[j + 1].style.height = `${keyHeight}px`;
+    barsInsertion[j + 1].style.height = `${keyHeight}px`;
+    barsInsertion[i].style.backgroundColor = "yellow";
 
-    bars[i].style.backgroundColor = "#3498db";
+    await sleep(200); // Delay for visualization
   }
-  bubbleSortButton.disabled = false;
 }
 
-const insertionSortButton = document.getElementById("insertion-sort-button");
-bubbleSortButton.addEventListener("click", insertionSort());
+document
+  .getElementById("insertion-sort-button")
+  .addEventListener("click", insertionSort);
