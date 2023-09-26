@@ -6,20 +6,22 @@ async function insertionSort() {
     const keyHeight = parseInt(barsInsertion[i].style.height);
     let j = i - 1;
 
-    barsInsertion[i].style.backgroundColor = "red";
+    barsInsertion[i].style.background = "red";
 
     while (j >= 0 && parseInt(barsInsertion[j].style.height) > keyHeight) {
-      barsInsertion[j + 1].style.backgroundColor = "red";
+      barsInsertion[j + 1].style.background = "red";
       await swap(barsInsertion[j], barsInsertion[j + 1]);
-      barsInsertion[j + 1].style.backgroundColor = "#00ff48";
+      barsInsertion[j + 1].style.background = "yellow";
       j--;
     }
 
     barsInsertion[j + 1].style.height = `${keyHeight}px`;
-    barsInsertion[i].style.backgroundColor = "yellow";
+    barsInsertion[i].style.background = "yellow";
 
     await sleep(200); // Delay for visualization
   }
+
+  barsInsertion[0].style.background = "yellow";
 }
 
 document
