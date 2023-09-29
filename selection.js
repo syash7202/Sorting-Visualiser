@@ -16,7 +16,7 @@ async function selectionSort() {
         bars[j].style.backgroundColor = "#00ff48";
       }
 
-      await sleep(100); // Delay for visualization
+      //   await sleep(100); // Delay for visualization
     }
 
     if (minIndex !== i) {
